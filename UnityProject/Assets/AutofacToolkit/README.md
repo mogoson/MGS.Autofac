@@ -1,2 +1,0 @@
-# AutofacToolkit
-AutofacToolkit
