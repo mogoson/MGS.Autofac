@@ -23,6 +23,11 @@
 - Use AutofacRegisterAttribute to mark a type need register.
 
   ```c#
+  public interface IDebugA
+  {
+      void DebugLog(string msg);
+  }
+  
   [AutofacRegister(Singleton = true)]
   internal class DebugA : IDebugA
   {
