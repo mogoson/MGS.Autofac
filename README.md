@@ -18,5 +18,25 @@
 ### Register
 - AutofacConfigurator register the mark types to AutofacUtility(Build Autofac Container) by RuntimeInitializeOnLoadMethodAttribute on UnityEngine load.
 
+### Usage
+
+- Use AutofacRegisterAttribute to mark a type need register.
+
+  ```c#
+  [AutofacRegister(Singleton = true)]
+  internal class DebugA : IDebugA
+  {
+      public void DebugLog(string msg)
+      {
+          Debug.Log(msg);
+      }
+  }
+  ```
+- Use AutofacUtility.Resolve to get the instance of the mark type.
+
+  ```c#
+  var debugA = AutofacUtility.Resolve<IDebugA>();
+  debugA.DebugLog("Test Resolve IDebugA");
+  ```
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@outlook.com.
