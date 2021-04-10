@@ -31,17 +31,19 @@ namespace Autofac
 #endif
         private static void Awake()
         {
-            AutofacUtility.Initialize(registerInfos);
+            AutofacUtility.Register(registerInfos);
         }
 
         /// <summary>
         /// Register infos(assemblyName, typeNames)
         /// </summary>
-        private static IDictionary<string, ICollection<string>> registerInfos = new Dictionary<string, ICollection<string>>()
+        private static readonly IDictionary<string, ICollection<string>> registerInfos = new Dictionary<string, ICollection<string>>()
         {
             {"Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", new List<string>(){
                 "Autofac.Demo.DebugA",
-                "Autofac.Demo.DebugBC",}
+                "Autofac.Demo.DebugB",
+                "Autofac.Demo.DebugC0",
+                "Autofac.Demo.DebugC1",}
             },
 
         };

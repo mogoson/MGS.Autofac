@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (c) 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  DebugBC.cs
+ *  File         :  DebugB.cs
  *  Description  :  Null.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -15,16 +15,11 @@ using UnityEngine;
 namespace Autofac.Demo
 {
     [AutofacRegister(Singleton = true)]
-    internal class DebugBC : IDebugB, IDebugC
+    internal class DebugB : IDebugB
     {
-        public void DebugError(string msg)
-        {
-            Debug.LogError(msg);
-        }
-
         public void DebugWarning(string msg)
         {
-            Debug.LogWarning(msg);
+            Debug.LogWarning("DebugB: " + msg);
         }
     }
 }

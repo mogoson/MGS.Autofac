@@ -14,12 +14,12 @@ using UnityEngine;
 
 namespace Autofac.Demo
 {
-    [AutofacRegister(Singleton = true)]
+    [AutofacRegister]
     internal class DebugA : IDebugA
     {
         public void DebugLog(string msg)
         {
-            Debug.Log(msg);
+            Debug.Log("DebugA: " + msg);
         }
     }
 }

@@ -20,28 +20,38 @@
 
 ### Usage
 
+- Define interface.
+
+  ```c#
+  public interface ITest
+  {
+      void DoTest();
+  }
+  ```
+
 - Use AutofacRegisterAttribute to mark a type need register.
 
   ```c#
-  public interface IDebugA
+  [AutofacRegister]
+  internal class Test : ITest
   {
-      void DebugLog(string msg);
+      public void DoTest(){}
   }
   
-  [AutofacRegister(Singleton = true)]
-  internal class DebugA : IDebugA
+  [AutofacRegister(ServiceKey = "Debug", ServiceType = typeof(ITest))]
+  internal class TestDebug : ITest
   {
-      public void DebugLog(string msg)
-      {
-          Debug.Log(msg);
-      }
+      public void DoTest(){}
   }
   ```
 - Use AutofacUtility.Resolve to get the instance of the mark type.
 
   ```c#
-  var debugA = AutofacUtility.Resolve<IDebugA>();
-  debugA.DebugLog("Test Resolve IDebugA");
+  var test = AutofacUtility.Resolve<ITest>();
+  test.DoTest();
+  
+  var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
+  testDebug.DoTest();
   ```
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@outlook.com.

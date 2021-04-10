@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (c) 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  DebugResolve.cs
+ *  File         :  DebugC.cs
  *  Description  :  Null.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -14,21 +14,21 @@ using UnityEngine;
 
 namespace Autofac.Demo
 {
-    public class DebugResolve : MonoBehaviour
+    [AutofacRegister(ServiceKey = "C0", ServiceType = typeof(IDebugC))]
+    internal class DebugC0 : IDebugC
     {
-        void Start()
+        public void DebugError(string msg)
         {
-            var debugA = AutofacUtility.Resolve<IDebugA>();
-            debugA.DebugLog("Test Resolve.");
+            Debug.LogError("DebugC0: " + msg);
+        }
+    }
 
-            var debugB = AutofacUtility.Resolve<IDebugB>();
-            debugB.DebugWarning("Test Resolve.");
-
-            var debugC0 = AutofacUtility.ResolveKeyed<IDebugC>("C0");
-            debugC0.DebugError("Test Resolve.");
-
-            var debugC1 = AutofacUtility.ResolveKeyed<IDebugC>("C1");
-            debugC1.DebugError("Test Resolve.");
+    [AutofacRegister(ServiceKey = "C1", ServiceType = typeof(IDebugC))]
+    internal class DebugC1 : IDebugC
+    {
+        public void DebugError(string msg)
+        {
+            Debug.LogError("DebugC1: " + msg);
         }
     }
 }

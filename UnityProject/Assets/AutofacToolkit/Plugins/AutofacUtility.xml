@@ -34,25 +34,56 @@
             Autofac container.
             </summary>
         </member>
-        <member name="M:Autofac.AutofacUtility.BuildContainer(System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+        <member name="F:Autofac.AutofacUtility.builder">
+            <summary>
+            Container builder.
+            </summary>
+        </member>
+        <member name="M:Autofac.AutofacUtility.BuildContainer(System.Collections.Generic.IEnumerable{System.Type})">
             <summary>
             Build container.
             </summary>
-            <param name="registerInfos">Register infos.</param>
-            <returns>IContainer.</returns>
+            <param name="types">Register types.</param>
+            <returns>Container.</returns>
         </member>
-        <member name="M:Autofac.AutofacUtility.RegisterTypes(Autofac.ContainerBuilder,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+        <member name="M:Autofac.AutofacUtility.RegisterTypes(Autofac.ContainerBuilder,System.Collections.Generic.IEnumerable{System.Type})">
             <summary>
             Register types to builder.
             </summary>
             <param name="builder">Container builder.</param>
-            <param name="registerInfos">Register infos.</param>
+            <param name="types">Register types.</param>
         </member>
-        <member name="M:Autofac.AutofacUtility.Initialize(System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+        <member name="M:Autofac.AutofacUtility.ResolveTypes(System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
             <summary>
-            Initialize utility.
+            Resolve register types.
             </summary>
-            <param name="registerInfos">Register infos(assemblyName, typeNames).</param>
+            <param name="infos">Register infos(assemblyName, typeNames).</param>
+        </member>
+        <member name="M:Autofac.AutofacUtility.Register">
+            <summary>
+            Register types of current domain assemblies.
+            </summary>
+            <returns>IContainer.</returns>
+        </member>
+        <member name="M:Autofac.AutofacUtility.Register(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Register types of target assemblies.
+            </summary>
+            <param name="assemblies">Target assemblies.</param>
+            <returns>IContainer.</returns>
+        </member>
+        <member name="M:Autofac.AutofacUtility.Register(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Register target types.
+            </summary>
+            <param name="types">Target types.</param>
+            <returns>IContainer.</returns>
+        </member>
+        <member name="M:Autofac.AutofacUtility.Register(System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+            <summary>
+            Register types of assemblies.
+            </summary>
+            <param name="infos">Register infos(assemblyName, typeNames).</param>
             <returns>IContainer.</returns>
         </member>
         <member name="M:Autofac.AutofacUtility.Resolve``1">
@@ -62,12 +93,12 @@
             <typeparam name="TService">TService type.</typeparam>
             <returns>TService</returns>
         </member>
-        <member name="M:Autofac.AutofacUtility.Resolve``1(Autofac.Core.Parameter[])">
+        <member name="M:Autofac.AutofacUtility.ResolveKeyed``1(System.Object)">
             <summary>
-            Resolve TService.
+            Resolve keyed TService.
             </summary>
             <typeparam name="TService">TService type.</typeparam>
-            <param name="parameters">Parameters for Resolve.</param>
+            <param name="serviceKey">Service key.</param>
             <returns>TService</returns>
         </member>
     </members>
