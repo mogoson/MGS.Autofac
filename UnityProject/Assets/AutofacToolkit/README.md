@@ -54,6 +54,9 @@
   var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
   testDebug.DoTest();
   ```
+## Source
+- https://github.com/mogoson/AutofacToolkit.
+
 ------
 
 Copyright © 2021 Mogoson. All rights reserved.	mogoson@outlook.com
