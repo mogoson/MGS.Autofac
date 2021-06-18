@@ -1,4 +1,4 @@
-﻿# AutofacToolkit
+﻿# MGS.Autofac
 
 ## Summary
 - Toolkit for Unity project develop with Autofac. 

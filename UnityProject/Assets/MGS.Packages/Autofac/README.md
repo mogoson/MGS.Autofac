@@ -1,4 +1,4 @@
-﻿# AutofacToolkit
+﻿# MGS.Autofac
 
 ## Summary
 - Toolkit for Unity project develop with Autofac. 
@@ -55,7 +55,7 @@
   testDebug.DoTest();
   ```
 ## Source
-- https://github.com/mogoson/AutofacToolkit.
+- https://github.com/mogoson/MGS.Autofac.
 
 ------
 
