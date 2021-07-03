@@ -1,4 +1,4 @@
-﻿# MGS.Autofac
+# MGS.Autofac
 
 ## Summary
 - Toolkit for Unity project develop with Autofac. 
@@ -54,6 +54,9 @@
   var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
   testDebug.DoTest();
   ```
+# Detail
+- [AutofacUtility](./MGS.CommonCode/Attachment/README/Autofac.md)
+
 ------
 
 Copyright © 2021 Mogoson. All rights reserved.	mogoson@outlook.com
