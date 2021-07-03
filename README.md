@@ -54,8 +54,6 @@
   var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
   testDebug.DoTest();
   ```
-# Detail
-- [AutofacUtility](./MGS.CommonCode/Attachment/README/Autofac.md)
 
 ------
 
