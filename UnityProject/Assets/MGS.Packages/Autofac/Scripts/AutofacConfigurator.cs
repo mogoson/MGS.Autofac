@@ -1,14 +1,13 @@
 /*************************************************************************
- *  Copyright © 2021 Mogoson. All rights reserved.
+ *  Copyright (C) 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  AutofacConfigurator.cs
  *  Description  :  Runtime configurator for Autofac.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
- *  Date         :  1/21/2021
- *  Description  :  Initial development version;
-                    The codes auto create by AutofacEditor.
+ *  Version      :  0.0.0.0
+ *  Date         :  10/3/2021
+ *  Description  :  The codes auto create by AutofacEditor.
  *************************************************************************/
 
 using System.Collections.Generic;
