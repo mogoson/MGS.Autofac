@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (c) 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  DebugResolve.cs
+ *  File         :  DebugResolveDemo.cs
  *  Description  :  Null.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace Autofac.Demo
 {
-    public class DebugResolve : MonoBehaviour
+    public class DebugResolveDemo : MonoBehaviour
     {
         void Start()
         {
