@@ -1,5 +1,5 @@
-/*************************************************************************
- *  Copyright (c) 2021 Mogoson. All rights reserved.
+﻿/*************************************************************************
+ *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  DebugResolveDemo.cs
  *  Description  :  Null.
@@ -19,16 +19,16 @@ namespace Autofac.Demo
         void Start()
         {
             var debugA = AutofacUtility.Resolve<IDebugA>();
-            debugA.DebugLog("Test Resolve.");
+            debugA.DebugLog("Test Resolve IDebugA.");
 
             var debugB = AutofacUtility.Resolve<IDebugB>();
-            debugB.DebugWarning("Test Resolve.");
+            debugB.DebugWarning("Test Resolve IDebugB.");
 
             var debugC0 = AutofacUtility.ResolveKeyed<IDebugC>("C0");
-            debugC0.DebugError("Test Resolve.");
+            debugC0.DebugError("Test Resolve IDebugC C0.");
 
             var debugC1 = AutofacUtility.ResolveKeyed<IDebugC>("C1");
-            debugC1.DebugError("Test Resolve.");
+            debugC1.DebugError("Test Resolve IDebugC C1.");
         }
     }
 }

@@ -1,12 +1,12 @@
 /*************************************************************************
- *  Copyright (C) 2021 Mogoson. All rights reserved.
+ *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  AutofacConfigurator.cs
  *  Description  :  Runtime configurator for Autofac.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.0.0.0
- *  Date         :  10/7/2021
+ *  Date         :  11/24/2021
  *  Description  :  The codes auto create by AutofacEditor.
  *************************************************************************/
 
@@ -31,12 +31,13 @@ namespace Autofac
         private static void Awake()
         {
             AutofacUtility.Register(registerInfos);
+            registerInfos = null;
         }
 
         /// <summary>
         /// Register infos(assemblyName, typeNames)
         /// </summary>
-        private static readonly IDictionary<string, ICollection<string>> registerInfos = new Dictionary<string, ICollection<string>>()
+        private static IDictionary<string, ICollection<string>> registerInfos = new Dictionary<string, ICollection<string>>()
         {
             {"Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", new List<string>(){
                 "Autofac.Demo.DebugA",
