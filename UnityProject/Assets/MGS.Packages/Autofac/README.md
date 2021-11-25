@@ -23,6 +23,13 @@
 
 ### Usage
 
+- Reference
+
+  If you need use AutofacUtility in dll：
+
+  - Create a C# project, move the AutofacRegisterAttribute.cs and AutofacUtility.cs files into the project.
+  - Compile project as dll to reference.
+
 - Define interface.
 
   ```c#
