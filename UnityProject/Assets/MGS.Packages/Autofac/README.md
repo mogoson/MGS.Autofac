@@ -27,7 +27,10 @@
 
   If you need use AutofacUtility in dll：
 
-  - Create a C# project, move the AutofacRegisterAttribute.cs and AutofacUtility.cs files into the project.
+  - Create a C# project, move the following files into the project:
+    - ./Scripts/Interface/...
+    - ./Scripts/FileLogger.cs
+    - ./Scripts/LogUtility.cs
   - Compile project as dll to reference.
 
 - Define interface.
@@ -63,7 +66,12 @@
   var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
   testDebug.DoTest();
   ```
+## Demo
+
+- Demos in the path "./Demo/" provide reference to you.
+
 ## Source
+
 - https://github.com/mogoson/MGS.Autofac.
 
 ------
