@@ -6,7 +6,7 @@
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.0.0.0
- *  Date         :  11/29/2021
+ *  Date         :  12/1/2021
  *  Description  :  The codes auto create by AutofacEditor.
  *************************************************************************/
 
@@ -23,7 +23,7 @@ namespace Autofac
         /// <summary>
         /// Awake Configurator.
         /// </summary>
-#if UNITY_5_3_OR_NEWER
+#if UNITY_5_3 || UNITY_5_3_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 #else
         [RuntimeInitializeOnLoadMethod]
