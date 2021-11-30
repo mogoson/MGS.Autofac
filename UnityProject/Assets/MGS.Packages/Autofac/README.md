@@ -68,7 +68,7 @@
   ```
 ## Demo
 
-- Demos in the path "./Demo/" provide reference to you.
+- Demos in the path "MGS.Packages/Autofac/Demo/" provide reference to you.
 
 ## Source
 
