@@ -28,9 +28,8 @@
   If you need use AutofacUtility in dll：
 
   - Create a C# project, move the following files into the project:
-    - ./Scripts/Interface/...
-    - ./Scripts/FileLogger.cs
-    - ./Scripts/LogUtility.cs
+    - ./Scripts/AutofacRegisterAttribute.cs
+    - ./Scripts/AutofacUtility.cs
   - Compile project as dll to reference.
 
 - Define interface.
