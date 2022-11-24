@@ -21,7 +21,7 @@ namespace Autofac.Editors
     public class AutofacEditor : AssetPostprocessor
     {
         static readonly string CONFIGURATOR_TEMPLATE_FILE_PATH = string.Format("{0}/MGS.Packages/Autofac/Editor/AutofacConfigurator.txt", Application.dataPath);
-        static readonly string CONFIGURATOR_RUNTIME_FILE_PATH = string.Format("{0}/MGS.Packages/Autofac/Runtime/Scripts/AutofacConfigurator.cs", Application.dataPath);
+        static readonly string CONFIGURATOR_RUNTIME_FILE_PATH = string.Format("{0}/MGS.Packages/Autofac/Runtime/AutofacConfigurator.cs", Application.dataPath);
         const string COPYRIGHT_YEAR = "#COPYRIGHTYEAR#";
         const string CREATE_DATE = "#CREATEDATE#";
         const string REGISTER_CODES = "/*REGISTERCODES*/";
