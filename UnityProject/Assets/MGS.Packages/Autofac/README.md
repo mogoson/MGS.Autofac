@@ -10,6 +10,10 @@
 - Unity 5.0 or above.
 - .Net Framework 3.5 or above.
 
+## Version
+
+- 1.2.0
+
 ## Demand
 - Auto register the mark types.
 - Resolve mark type anywhere.
