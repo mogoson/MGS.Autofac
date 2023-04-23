@@ -21,10 +21,25 @@ namespace Autofac.Editors
 {
     public class AutofacEditor : AssetPostprocessor
     {
+        const string NAME_CONFIGURATOR = "AutofacConfigurator";
+
+        const string TAG_COPYRIGHT_YEAR = "#COPYRIGHTYEAR#";
+        const string TAG_CREATE_DATE = "#CREATEDATE#";
+        const string TAG_REGISTER_CODES = "/*REGISTERCODES*/";
+
+        const string KEY_IGNORE = "IGNORE_UPDATE_CONFIGURATOR";
+
         [UnityEditor.Callbacks.DidReloadScripts]
         static void OnDidReloadScripts()
         {
+            if (EditorPrefs.GetBool(KEY_IGNORE))
+            {
+                EditorPrefs.SetBool(KEY_IGNORE, false);
+                return;
+            }
+
             UpdateConfigurator();
+            EditorPrefs.SetBool(KEY_IGNORE, true);
         }
 
         static void UpdateConfigurator()
@@ -37,9 +52,9 @@ namespace Autofac.Editors
             }
 
             var configurator = ReadConfiguratorTemplate();
-            configurator = configurator.Replace("#COPYRIGHTYEAR#", DateTime.Now.Year.ToString());
-            configurator = configurator.Replace("#CREATEDATE#", DateTime.Now.ToShortDateString());
-            configurator = configurator.Replace("/*REGISTERCODES*/", registerCodes);
+            configurator = configurator.Replace(TAG_COPYRIGHT_YEAR, DateTime.Now.Year.ToString());
+            configurator = configurator.Replace(TAG_CREATE_DATE, DateTime.Now.ToShortDateString());
+            configurator = configurator.Replace(TAG_REGISTER_CODES, registerCodes);
             OverwriteConfiguratorClass(configurator);
         }
 
@@ -47,19 +62,25 @@ namespace Autofac.Editors
         {
             var editorClass = $"{typeof(AutofacEditor).Name}.cs";
             var editorPath = AssetDatabase.GetAllAssetPaths().First(path => { return path.Contains(editorClass); });
-            var templatePath = editorPath.Replace(editorClass, "AutofacConfigurator.txt");
+            var templatePath = editorPath.Replace(editorClass, $"{NAME_CONFIGURATOR}.txt");
             return AssetDatabase.LoadAssetAtPath<TextAsset>(templatePath).text;
         }
 
         static void OverwriteConfiguratorClass(string configurator)
         {
-            var configuratorPath = $"{Application.dataPath}/Scripts/AutofacConfigurator.cs";
-            var configuratorDir = Path.GetDirectoryName(configuratorPath);
-            if (!Directory.Exists(configuratorDir))
-            {
-                Directory.CreateDirectory(configuratorDir);
-            }
-            File.WriteAllText(configuratorPath, configurator);
+            var configuratorAsset = $"Assets/{NAME_CONFIGURATOR}.txt";
+            AssetDatabase.CreateAsset(new TextAsset(), configuratorAsset);
+
+            var configuratorTempPath = $"{Application.dataPath}/../{configuratorAsset}";
+            File.WriteAllText(configuratorTempPath, configurator);
+
+            var utilityClass = $"{typeof(AutofacUtility).Name}.cs";
+            var utilityPath = AssetDatabase.GetAllAssetPaths().First(path => { return path.Contains(utilityClass); });
+            var configuratorPath = utilityPath.Replace(utilityClass, $"{NAME_CONFIGURATOR}.cs");
+
+            AssetDatabase.DeleteAsset(configuratorPath);
+            AssetDatabase.CopyAsset(configuratorAsset, configuratorPath);
+            AssetDatabase.DeleteAsset(configuratorAsset);
             AssetDatabase.Refresh();
         }
 
