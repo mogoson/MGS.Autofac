@@ -1,6 +1,6 @@
 [TOC]
 
-# MGS.Autofac
+﻿# MGS.Autofac
 
 ## Summary
 - Toolkit for Unity project develop with Autofac. 
@@ -9,6 +9,10 @@
 
 - Unity 5.0 or above.
 - .Net Framework 3.5 or above.
+
+## Version
+
+- 1.2.0
 
 ## Demand
 - Auto register the mark types.
@@ -31,7 +35,7 @@
     - ./Scripts/AutofacRegisterAttribute.cs
     - ./Scripts/AutofacUtility.cs
   - Compile project as dll to reference.
-  
+
 - Define interface.
 
   ```c#
@@ -65,11 +69,6 @@
   var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
   testDebug.DoTest();
   ```
-
-## Demo
-
-- Demos in the path "MGS.Packages/Autofac/Demo/" provide reference to you.
-
 ------
 
 Copyright © 2021 Mogoson. All rights reserved.	mogoson@outlook.com

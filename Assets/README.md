@@ -69,14 +69,6 @@
   var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
   testDebug.DoTest();
   ```
-## Demo
-
-- Demos in the path "MGS.Packages/Autofac/Demo/" provide reference to you.
-
-## Source
-
-- https://github.com/mogoson/MGS.Autofac.
-
 ------
 
 Copyright © 2021 Mogoson. All rights reserved.	mogoson@outlook.com
