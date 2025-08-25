@@ -1,40 +1,22 @@
 [TOC]
 
-﻿# MGS.Autofac
+# MGS.Autofac
 
 ## Summary
 - Toolkit for Unity project develop with Autofac. 
 
-## Environment
-
-- Unity 5.0 or above.
-- .Net Framework 3.5 or above.
-
-## Version
-
-- 1.2.0
-
-## Demand
+## Ability
 - Auto register the mark types.
 - Resolve mark type anywhere.
 
-## Implement
+## Scheme
 ### Config
 - AutofacEditor auto search the register types mark by AutofacRegisterAttribute, and build the runtime config file(AutofacConfigurator.cs) on UnityEditor DidReloadScripts.
 
 ### Register
 - AutofacConfigurator register the mark types to AutofacUtility(Build Autofac Container) by RuntimeInitializeOnLoadMethodAttribute on UnityEngine load.
 
-### Usage
-
-- Reference
-
-  If you need use AutofacUtility in dll：
-
-  - Create a C# project, move the following files into the project:
-    - ./Scripts/AutofacRegisterAttribute.cs
-    - ./Scripts/AutofacUtility.cs
-  - Compile project as dll to reference.
+## Usage
 
 - Define interface.
 
@@ -69,6 +51,7 @@
   var testDebug = AutofacUtility.ResolveKeyed<ITest>("Debug");
   testDebug.DoTest();
   ```
+
 ------
 
-Copyright © 2021 Mogoson. All rights reserved.	mogoson@outlook.com
+Copyright © 2025 Mogoson.	mogoson@outlook.com

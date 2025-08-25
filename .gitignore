@@ -62,3 +62,5 @@ crashlytics-build.properties
 /UnityProject/obj
 /UnityProject/Temp
 /*.vsconfig
+/Assets/Runtime/AutofacConfigurator.cs
+/Assets/Runtime/AutofacConfigurator.cs.meta
