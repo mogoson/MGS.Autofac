@@ -64,3 +64,6 @@ crashlytics-build.properties
 /*.vsconfig
 /Assets/Runtime/AutofacConfigurator.cs
 /Assets/Runtime/AutofacConfigurator.cs.meta
+/Assets/Scenes
+/Assets/Scenes.meta
+/output
