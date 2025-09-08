@@ -9,6 +9,14 @@
 - Auto register the mark types.
 - Resolve mark type anywhere.
 
+## Install
+
+- Unity --> Window --> Package Manager --> "+" --> Add package from git URL...
+
+  ```text
+  https://github.com/mogoson/MGS.Autofac.git?path=/Assets
+  ```
+
 ## Scheme
 ### Config
 - AutofacEditor auto search the register types mark by AutofacRegisterAttribute, and build the runtime config file(AutofacConfigurator.cs) on UnityEditor DidReloadScripts.
