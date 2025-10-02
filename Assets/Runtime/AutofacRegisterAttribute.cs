@@ -12,7 +12,7 @@
 
 using System;
 
-namespace Autofac
+namespace MGS.Autofac
 {
     /// <summary>
     /// Attribute for register autofac.

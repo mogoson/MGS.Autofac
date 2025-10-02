@@ -1,8 +1,7 @@
-﻿using Autofac;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using UnityEngine;
 
-namespace Tests
+namespace MGS.Autofac.Tests
 {
     public class AutofacTests
     {

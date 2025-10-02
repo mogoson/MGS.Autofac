@@ -13,8 +13,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Autofac;
+using Autofac.Builder;
 
-namespace Autofac
+namespace MGS.Autofac
 {
     /// <summary>
     /// Utility for Autofac.
@@ -42,7 +44,7 @@ namespace Autofac
         private static IContainer BuildContainer(IEnumerable<Type> types)
         {
             RegisterTypes(builder, types);
-            Container = builder.Build(Builder.ContainerBuildOptions.None);
+            Container = builder.Build(ContainerBuildOptions.None);
             return Container;
         }
 
