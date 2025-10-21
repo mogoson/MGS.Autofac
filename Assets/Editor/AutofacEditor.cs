@@ -81,12 +81,30 @@ namespace MGS.Autofac.Editors
         {
             var infos = new Dictionary<string, ICollection<string>>();
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            var regAttType = typeof(AutofacRegisterAttribute);
+            var attAssName = regAttType.Assembly.FullName;
             foreach (var assembly in assemblies)
             {
+                var isPossible = false;
+                var references = assembly.GetReferencedAssemblies();
+                foreach (var reference in references)
+                {
+                    if (reference.FullName == attAssName)
+                    {
+                        isPossible = true;
+                        break;
+                    }
+                }
+
+                if (!isPossible)
+                {
+                    continue;
+                }
+
                 var types = new List<string>();
                 foreach (var type in assembly.GetTypes())
                 {
-                    if (Attribute.IsDefined(type, typeof(AutofacRegisterAttribute)))
+                    if (Attribute.IsDefined(type, regAttType))
                     {
                         types.Add($"{type.FullName}");
                     }
