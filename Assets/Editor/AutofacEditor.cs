@@ -15,7 +15,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
 
 namespace MGS.Autofac.Editors
 {
@@ -27,19 +26,10 @@ namespace MGS.Autofac.Editors
         const string TAG_CREATE_DATE = "#CREATEDATE#";
         const string TAG_REGISTER_CODES = "/*REGISTERCODES*/";
 
-        const string KEY_IGNORE = "IGNORE_UPDATE_CONFIGURATOR";
-
         [UnityEditor.Callbacks.DidReloadScripts]
         static void OnDidReloadScripts()
         {
-            if (EditorPrefs.GetBool(KEY_IGNORE))
-            {
-                EditorPrefs.SetBool(KEY_IGNORE, false);
-                return;
-            }
-
             UpdateConfigurator();
-            EditorPrefs.SetBool(KEY_IGNORE, true);
         }
 
         static void UpdateConfigurator()
@@ -60,28 +50,31 @@ namespace MGS.Autofac.Editors
 
         static string ReadConfiguratorTemplate()
         {
-            var editorClass = $"{typeof(AutofacEditor).Name}.cs";
-            var editorPath = AssetDatabase.GetAllAssetPaths().First(path => { return path.Contains(editorClass); });
-            var templatePath = editorPath.Replace(editorClass, $"{NAME_CONFIGURATOR}.txt");
-            return AssetDatabase.LoadAssetAtPath<TextAsset>(templatePath).text;
+            var templatePath = $"{ResolveEditorDir()}/{NAME_CONFIGURATOR}.txt";
+            return File.ReadAllText(templatePath);
         }
 
         static void OverwriteConfiguratorClass(string configurator)
         {
-            var configuratorAsset = $"Assets/{NAME_CONFIGURATOR}.txt";
-            AssetDatabase.CreateAsset(new TextAsset(), configuratorAsset);
-
-            var configuratorTempPath = $"{Application.dataPath}/../{configuratorAsset}";
-            File.WriteAllText(configuratorTempPath, configurator);
-
-            var utilityClass = $"{typeof(AutofacUtility).Name}.cs";
-            var utilityPath = AssetDatabase.GetAllAssetPaths().First(path => { return path.Contains(utilityClass); });
-            var configuratorPath = utilityPath.Replace(utilityClass, $"{NAME_CONFIGURATOR}.cs");
-
-            AssetDatabase.DeleteAsset(configuratorPath);
-            AssetDatabase.CopyAsset(configuratorAsset, configuratorPath);
-            AssetDatabase.DeleteAsset(configuratorAsset);
+            var configuratorPath = $"{ResolveRuntimeDir()}/{NAME_CONFIGURATOR}.cs";
+            File.WriteAllText(configuratorPath, configurator);
             AssetDatabase.Refresh();
+        }
+
+        static string ResolveEditorDir()
+        {
+            return ResolveFileDir($"{nameof(AutofacEditor)}.cs");
+        }
+
+        static string ResolveRuntimeDir()
+        {
+            return ResolveFileDir($"{nameof(AutofacUtility)}.cs");
+        }
+
+        static string ResolveFileDir(string fileName)
+        {
+            var filePath = AssetDatabase.GetAllAssetPaths().First(path => path.Contains(fileName));
+            return Path.GetDirectoryName(filePath);
         }
 
         static IDictionary<string, ICollection<string>> SearchRegisterInfos()
@@ -95,7 +88,7 @@ namespace MGS.Autofac.Editors
                 {
                     if (Attribute.IsDefined(type, typeof(AutofacRegisterAttribute)))
                     {
-                        types.Add(string.Format("{0}", type.FullName));
+                        types.Add($"{type.FullName}");
                     }
                 }
 
@@ -116,11 +109,11 @@ namespace MGS.Autofac.Editors
                 var typeCodeLines = string.Empty;
                 foreach (var typeName in types)
                 {
-                    typeCodeLines += string.Format("\r\n                \"{0}\",", typeName);
+                    typeCodeLines += $"\r\n                \"{typeName}\",";
                 }
 
-                var typeListCodes = string.Format("new List<string>(){{{0}}}", typeCodeLines);
-                codes += string.Format("{{\"{0}\", {1}\r\n            }},\r\n", assemblyName, typeListCodes);
+                var typeListCodes = $"new List<string>(){{{typeCodeLines}}}";
+                codes += $"{{\"{assemblyName}\", {typeListCodes}\r\n            }},\r\n";
             }
             return codes;
         }
