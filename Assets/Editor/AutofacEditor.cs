@@ -53,7 +53,7 @@ namespace MGS.Autofac.Editors
 
             var configurator = ReadConfiguratorTemplate();
             configurator = configurator.Replace(TAG_COPYRIGHT_YEAR, DateTime.Now.Year.ToString());
-            configurator = configurator.Replace(TAG_CREATE_DATE, DateTime.Now.ToShortDateString());
+            configurator = configurator.Replace(TAG_CREATE_DATE, DateTime.Now.ToString("MM/dd/yyyy"));
             configurator = configurator.Replace(TAG_REGISTER_CODES, registerCodes);
             OverwriteConfiguratorClass(configurator);
         }

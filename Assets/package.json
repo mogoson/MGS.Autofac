@@ -2,14 +2,23 @@
     "name": "com.mgs.autofac",
     "version": "1.0.0",
     "displayName": "Autofac",
-    "description": "Toolkit for Unity project develop with Autofac",
+    "description": "Autofac to resolve instance of interface.",
     "unity": "2021.3",
     "keywords": [
-        "autofac"
+        "autofac",
+        "resolve",
+        "instance"
     ],
     "author": {
         "name": "Mogoson",
         "email": "mogoson@outlook.com",
         "url": "https://github.com/mogoson"
-    }
+    },
+    "samples": [
+        {
+            "displayName": "Sample",
+            "description": "Sample for Autofac to resolve instance of interface.",
+            "path": "Samples~/Sample"
+        }
+    ]
 }

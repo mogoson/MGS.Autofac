@@ -1,0 +1,17 @@
+{
+    "name": "MGS.Autofac.ImplementSample",
+    "rootNamespace": "",
+    "references": [
+        "MGS.Autofac",
+        "MGS.Autofac.InterfaceSample"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
