@@ -3,7 +3,7 @@
 # MGS.Autofac
 
 ## Summary
-- Toolkit for Unity project develop with Autofac. 
+- Autofac to resolve instance of interface.
 
 ## Ability
 - Auto register the mark types.
