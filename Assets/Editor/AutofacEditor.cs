@@ -73,7 +73,7 @@ namespace MGS.Autofac.Editors
 
         static string ResolveFileDir(string fileName)
         {
-            var filePath = AssetDatabase.GetAllAssetPaths().First(path => path.Contains(fileName));
+            var filePath = AssetDatabase.GetAllAssetPaths().First(path => path.EndsWith(fileName));
             return Path.GetDirectoryName(filePath);
         }
 
